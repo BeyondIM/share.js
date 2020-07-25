@@ -97,10 +97,7 @@
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
-
-            var tooltip = document.createElement('span');
-            tooltip.classList.add("tooltip");
-            iconLink.appendChild(tooltip);
+            alert("已复制到剪贴板");
         });
         iconLink.addEventListener('mouseleave', function() {
             iconLink.removeChild(tooltip);
