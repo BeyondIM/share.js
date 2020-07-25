@@ -85,7 +85,8 @@
     // Domready after initialization
     alReady(function () {
         socialShare('.social-share, .share-component');
-        document.querySelector('.icon-link').addEventListener('click', function(ev) {
+        var iconLink = document.querySelector('.icon-link');
+        iconLink.addEventListener('click', function(ev) {
             ev.preventDefault();
             var el = document.createElement('textarea');
             el.value = document.querySelector('.social-share').getAttribute('data-url');
@@ -96,6 +97,13 @@
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
+
+            var tooltip = document.createElement('span');
+            tooltip.classList.add("tooltip");
+            iconLink.appendChild(tooltip);
+        });
+        iconLink.addEventListener('mouseleave', function() {
+            iconLink.removeChild(tooltip);
         });
     });
 
